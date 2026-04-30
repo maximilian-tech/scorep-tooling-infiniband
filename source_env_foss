@@ -8,6 +8,7 @@ module load release/2026  GCC/14.2.0 OpenMPI/5.0.7 CMake/3.31.3 Python/3.13.1 el
 export TC_NAME="foss"
 
 export PATH=${SCRIPT_DIR}/scorep_install_gcc/bin:$PATH
+export LD_LIBRARY_PATH=${SCRIPT_DIR}/scorep_install_gcc/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=${SCRIPT_DIR}/scorep_plugin_infiniband_install_gcc/lib:$LD_LIBRARY_PATH
 
 export PATH=${SCRIPT_DIR}/lo2s_install_gcc/bin:$PATH
