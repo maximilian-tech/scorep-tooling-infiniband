@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+module purge
+module load release/2026  GCC/14.3.0 OpenMPI/5.0.8 CMake/4.0.3 Python/3.13.5
+
+export PATH=${SCRIPT_DIR}/scorep_install_gcc/bin:$PATH
+export LD_LIBRARY_PATH=${SCRIPT_DIR}/scorep_plugin_infiniband_install_gcc/lib:$LD_LIBRARY_PATH
+
+export TC_NAME="foss"
