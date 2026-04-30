@@ -15,7 +15,7 @@ export SCOREP_METRIC_PLUGINS=infiniband_plugin      # required
 export SCOREP_METRIC_INFINIBAND_PLUGIN_INTERVAL=5  # (optional) Sampling interval in ms
 export INFINIBAND_PLUGIN_VERBOSE=WARN # FATAL, ERROR, WARN, INFO, DEBUG
 
-export SCOREP_METRIC_INFINIBAND_PLUGIN='port_xmit_data,port_xmit_pkts,port_rcv_data,port_rcv_pkts,rx_atomic_requests,rx_dct_connect,rx_read_requests,rx_write_requests'          # required
+export SCOREP_METRIC_INFINIBAND_PLUGIN='port_xmit_data,port_xmit_packets,port_rcv_data,port_rcv_packets,rx_atomic_requests,rx_dct_connect,rx_read_requests,rx_write_requests'          # required
 
 export SCOREP_ENABLE_PROFILING=0 # Required
 export SCOREP_ENABLE_TRACING=1
