@@ -24,7 +24,7 @@ if [ ! -d lo2s-source ] ; then
 
     rm -rf lo2s-source
     mkdir -p lo2s-source
-    git clone --recursive https://github.com/tud-zih-energy/lo2s.git lo2s-source
+    git clone --recursive --branch relax_otf2_version_req https://github.com/maximilian-tech/lo2s.git lo2s-source
 fi
 
 if [ ! -d "${SCRIPT_DIR}/lo2s_install_$compiler" ] ; then
@@ -35,6 +35,7 @@ if [ ! -d "${SCRIPT_DIR}/lo2s_install_$compiler" ] ; then
         cmake ../ --fresh \
 	  -DCMAKE_INSTALL_PREFIX="${SCRIPT_DIR}/lo2s_install_$compiler" \
 	  -DUSE_BPF:BOOL=OFF \
+	  -DOTF2XX_RELAX_OTF2VERSION_REQUIREMENT=ON \
 	  -DCMAKE_BUILD_TYPE=Release
 
        		  	
