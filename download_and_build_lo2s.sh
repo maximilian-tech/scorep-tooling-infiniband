@@ -27,6 +27,8 @@ if [ ! -d lo2s-source ] ; then
     git clone --recursive --branch relax_otf2_version_req https://github.com/maximilian-tech/lo2s.git lo2s-source
 fi
 
+export CPLUS_INCLUDE_PATH=/home/s0872522/Downloads/elfutils-0.192
+
 if [ ! -d "${SCRIPT_DIR}/lo2s_install_$compiler" ] ; then
     cd lo2s-source
     rm -rf _build_$compiler
@@ -36,6 +38,8 @@ if [ ! -d "${SCRIPT_DIR}/lo2s_install_$compiler" ] ; then
 	  -DCMAKE_INSTALL_PREFIX="${SCRIPT_DIR}/lo2s_install_$compiler" \
 	  -DUSE_BPF:BOOL=OFF \
 	  -DOTF2XX_RELAX_OTF2VERSION_REQUIREMENT=ON \
+	  -DUSE_DEBUGINFOD=ON \
+	  -DDebuginfod_LIBRARY=/usr/lib64/libdebuginfod.so.1 \
 	  -DCMAKE_BUILD_TYPE=Release
 
        		  	

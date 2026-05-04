@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #SBATCH -N 2
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=00:30:00
+#SBATCH --time=00:05:00
 #SBATCH --cpu-freq=high
 
 
@@ -25,6 +25,6 @@ export SCOREP_METRIC_PERF=cache-misses,cycles,cpu-clock
 
 EXE="/data/horse/ws/s0872522-osu_benchmarks/osu_foss_scorep/libexec/osu-micro-benchmarks/mpi/one-sided/osu_put_bw"
 
-srun lo2s --output-trace lo2s_trace_rank_{ENV=SLURM_PROCID} --count 1000000 --call-graph --standard-metrics  -- "${EXE}"
+srun lo2s --dwarf=full --output-trace lo2s_trace_rank_{ENV=SLURM_PROCID} --count 100000 --call-graph --standard-metrics  -- "${EXE}"
 
 
