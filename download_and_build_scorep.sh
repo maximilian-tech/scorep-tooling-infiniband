@@ -3,18 +3,20 @@
 set -euo pipefail
 set -x
 
-if (( $# != 1 )) || [[ $1 != gcc && $1 != intel ]]; then
-    printf 'Usage: %s {gcc|intel}\n' "$0" >&2
+if (( $# != 1 )) || [[ $1 != ompi && $1 != intel && $1 != mpich ]]; then
+    printf 'Usage: %s {ompi|intel|mpich}\n' "$0" >&2
     exit 1
 fi
 
 declare -A MPI_MAP=(
-    [gcc]=openmpi
+    [ompi]=openmpi
     [intel]=intel3
+    [mpich]=mpich3
 )
 declare -A COMPILER_MAP=(
-    [gcc]=gcc
+    [ompi]=gcc
     [intel]=oneapi
+    [mpich]=clang
 )
 
 
@@ -48,7 +50,6 @@ if [ ! -d "${SCRIPT_DIR}/scorep_install_$compiler" ] ; then
         ../configure --prefix="${SCRIPT_DIR}/scorep_install_$compiler" \
                     --disable-cuda \
                     --disable-openacc \
-                    --without-shmem \
                     --with-libgotcha=download \
                     --with-libunwind=download \
                     --with-libbfd=download \

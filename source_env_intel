@@ -8,6 +8,6 @@ module load release/25.06 intel/2024a CMake/3.31.8 Python/3.12.3
 export I_MPI_CC=icx
 export TC_NAME="intel"
 
-export PATH=${SCRIPT_DIR}/scorep_install_intel/bin:$PATH
-export LD_LIBRARY_PATH=${SCRIPT_DIR}/scorep_plugin_infiniband_install_intel/lib:$LD_LIBRARY_PATH
+export PATH=${SCRIPT_DIR}/scorep_install_${TC_NAME}/bin:$PATH
+export LD_LIBRARY_PATH=${SCRIPT_DIR}/scorep_plugin_infiniband_install_${TC_NAME}/lib:$LD_LIBRARY_PATH
 
