@@ -3,8 +3,8 @@
 set -euo pipefail
 set -x
 
-if (( $# != 1 )) || [[ $1 != gcc && $1 != intel ]]; then
-    printf 'Usage: %s {gcc|intel}\n' "$0" >&2
+if (( $# != 1 )) || [[ $1 != gcc && $1 != intel && $1 != mpich ]]; then
+    printf 'Usage: %s {ompi|intel|mpich}\n' "$0" >&2
     exit 1
 fi
 
