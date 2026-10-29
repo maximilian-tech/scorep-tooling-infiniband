@@ -9,6 +9,7 @@ if (( $# != 1 )) || [[ $1 != ompi && $1 != intel && $1 != mpich ]]; then
 fi
 
 compiler=$1
+tc_name=$1
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -18,13 +19,13 @@ if [ ! -d scorep_plugin_infiniband ] ; then
     git clone --recursive git@github.com:score-p/scorep_plugin_infiniband.git scorep_plugin_infiniband
 fi
 
-if [ ! -d "${SCRIPT_DIR}/scorep_plugin_infiniband_install_$compiler" ] ; then
+if [ ! -d "${SCRIPT_DIR}/scorep_plugin_infiniband_install_$tc_name" ] ; then
     cd "${SCRIPT_DIR}/scorep_plugin_infiniband"
     rm -rf _build
     mkdir -p _build
     cd _build
     cmake .. --fresh \
-      -DCMAKE_INSTALL_PREFIX="${SCRIPT_DIR}/scorep_plugin_infiniband_install_$compiler" \
+      -DCMAKE_INSTALL_PREFIX="${SCRIPT_DIR}/scorep_plugin_infiniband_install_$tc_name" \
       -DCMAKE_BUILD_TYPE=Release
     make -B
     make install
