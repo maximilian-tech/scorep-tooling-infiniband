@@ -1,0 +1,12 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+module purge
+module load release/2026 lmpich/2025b CMake Python
+
+export TC_NAME="mpich"
+
+export PATH=${SCRIPT_DIR}/scorep_install_${TC_NAME}/bin:$PATH
+export LD_LIBRARY_PATH=${SCRIPT_DIR}/scorep_plugin_infiniband_install_${TC_NAME}/lib:$LD_LIBRARY_PATH
+
